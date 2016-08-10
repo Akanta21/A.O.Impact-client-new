@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-app="angelApp" ng-cloak>
+  <div layout="column" layout-align="space-between">
+    <md-content class="md-padding" ng-controller="mainController">
+      <md-nav-bar  nav-bar-aria-label="navigation links" layout="row" layout-align="center center">
+        <md-button class="md-primary md-raised" href="#!/login" ng-hide="currentUserSignedIn">Login</md-button>
+        <span ng-show="currentUserSignedIn">{{res.currentUser.name}}</span>
+        <md-button class="md-primary md-raised" href="#!/newuser">SignUp</md-button>
+        <md-button class="md-primary md-raised" href="#!/product">Product</md-button>
+        <md-button class="md-primary md-raised" href="#!/instagram">Instagram</md-button>
+        <md-button ng-controller="logoutCtrl" class="md-primary md-raised" ng-click="logout()">Logout</md-button>
+      </md-nav-bar>
+    </md-content>
+  </div>
+  <!-- <ul class="menu">
+    <li><a href="#!/login">Login</a></li>
+    <li><a href="#!/newuser">Signup</a></li>
+    <li><a href="#!/logout" ng-click="logout()">Logout</a></li>
+    <li><a href="#!/product">View All Pre-orders</a></li>
+    <li><a href="#!/instagram">Instagram</a></li>
+  </ul> -->
+
+
+  <div ng-view></div>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+  <script src="login/login.js"></script>
+  <script src="newuser/newuser.js"></script>
+  <script src="instagram/instagram.js"></script>
+  <script src="logout.js"></script>
+  <script src="product/product.js"></script>
+  <!-- <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script> -->
+</body>
+</html>
