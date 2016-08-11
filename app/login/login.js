@@ -30,5 +30,9 @@ angular.module('app.login', ['ngRoute'])
       $location.path('/')
       location.reload()
     })
+    .error(function (response) {
+      console.log(response)
+      $scope.message = response.err
+    })
   }
 }])

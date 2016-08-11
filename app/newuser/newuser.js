@@ -10,6 +10,7 @@ angular.module('app.newuser', ['ngRoute', 'ngMaterial', 'ngMessages'])
 }])
 
 .controller('newUserCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+  $scope.message
   $scope.signup = function () {
     var data = {
       name: $scope.formData.name,
@@ -30,6 +31,10 @@ angular.module('app.newuser', ['ngRoute', 'ngMaterial', 'ngMessages'])
       window.localStorage.auth_token = data.user.auth_token
       $location.path('/')
       location.reload()
+    })
+    .error(function(response) {
+      console.log(response)
+      $scope.message = response.error
     })
   }
 }])

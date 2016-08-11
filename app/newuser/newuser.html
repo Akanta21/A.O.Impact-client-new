@@ -3,7 +3,6 @@
     <md-toolbar class='md-hue-2'>
       <p class="md-toolbar-tools">SIGN UP</p>
     </md-toolbar>
-
     <form name="loginForm">
       <md-content layout="column" class="md-padding">
         <md-input-container id="name">
@@ -29,6 +28,7 @@
           <div flex="flex"></div>
         </div>
       </md-content>
+      <h2 class="error-msg"ng-if="message">User already exist!</h2>
     </form>
   </div>
 </div>

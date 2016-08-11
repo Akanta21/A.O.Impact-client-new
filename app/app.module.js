@@ -5,9 +5,11 @@ angular.module('angelApp', [
   'ngMaterial',
   'ngMessages',
   'app.product',
+  'app.home',
   'app.login',
   'app.logout',
   'app.newuser',
+  'app.allusers',
   'app.profile',
   'app.newitem'
 ])

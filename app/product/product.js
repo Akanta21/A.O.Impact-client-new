@@ -1,22 +1,25 @@
-'use strict';
+/* include global angular location */
+'use strict'
 
 angular.module('app.product', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/product', {
     templateUrl: 'product/product.html',
     controller: 'productCtrl'
-  });
+  })
 }])
 
-.controller('productCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
+.controller('productCtrl', ['$scope', '$http', '$location', '$mdMedia', '$mdDialog', function ($scope, $http, $location, $mdMedia, $mdDialog) {
   var url = 'https://aoimpact.herokuapp.com/products'
   var itemsArray = []
   var priceArray = []
   var totalPrice = 0
 
-  $http.get(url).then(function(response) {
-    console.log(response)
+  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm')
+
+  $http.get(url).then(function (response) {
+    // console.log(response)
     $scope.topics = response.data
     $scope.id = response.data._id
   })
@@ -60,6 +63,50 @@ angular.module('app.product', ['ngRoute'])
     console.log(priceArray)
     console.log(totalPrice)
   }
+  $scope.individual = "random"
+  $scope.showAdvanced = (ev, itemObject) => {
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen
+    $scope.individual = itemObject
+    console.log($scope.individual)
+    // console.log(this)
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'individualproduct.html',
+      locals: {
+        item: $scope.individual
+      },
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: useFullScreen
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".'
+    }, function() {
+      $scope.status = 'You cancelled the dialog.'
+    });
+    $scope.$watch(function() {
+      return $mdMedia('xs') || $mdMedia('sm')
+    }, function(wantsFullScreen) {
+      $scope.customFullscreen = (wantsFullScreen === true)
+    })
+    function DialogController($scope, $mdDialog,$location, item) {
+      $scope.item = item
+      console.log($scope.item)
+    $scope.hide = function() {
+      $mdDialog.hide();
+      console.log($scope.item)
+    };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+      $location.path("/newuser")
+    };
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
+  };
+
+
   // $scope.removeCart = function (item, price) {
   //   totalPrice -= price
   //   console.log(totalPrice)

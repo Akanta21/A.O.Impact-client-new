@@ -3,7 +3,6 @@
     <md-toolbar class='md-hue-3'>
       <p class="md-toolbar-tools">Add New Item</p>
     </md-toolbar>
-
     <form name="addItemForm">
       <md-content layout="column" class="md-padding">
         <md-input-container id="name">
@@ -21,10 +20,10 @@
           </div>
         </md-input-container>
         <md-input-container id="picture">
-          <label>Picture url</label>
+          <label>Picture</label>
           <md-select name="picture" ng-model="picture">
             <md-option ng-repeat="topic in topics" value="{{topic.images.standard_resolution.url}}">
-              <img ng-src="{{topic.images.standard_resolution.url}}" style="width:100px;height:100px"; />
+              <img ng-src="{{topic.images.standard_resolution.url}}" style="width:150px;height:150px"; />
             </md-option>
           </md-select>
         </md-input-container>
@@ -54,7 +53,6 @@
           <div flex="flex"></div>
         </div>
       </md-content>
-      <md-button ng-click="test()"> test </md-button>
     </form>
   </div>
 </div>
