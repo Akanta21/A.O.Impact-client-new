@@ -8,5 +8,6 @@ angular.module('angelApp', [
   'app.login',
   'app.logout',
   'app.newuser',
-  'app.instagram'
+  'app.profile',
+  'app.newitem'
 ])

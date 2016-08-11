@@ -24,9 +24,11 @@ angular.module('app.login', ['ngRoute'])
     })
     .success(function (data) {
       console.log(data)
-      window.localStorage.user_email = data.email
-      window.localStorage.auth_token = data.auth_token
+      window.localStorage.name = data.user.name
+      window.localStorage.user_email = data.user.email
+      window.localStorage.auth_token = data.user.auth_token
       $location.path('/')
+      location.reload()
     })
   }
 }])

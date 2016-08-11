@@ -8,10 +8,9 @@
       <md-content layout="column" class="md-padding">
         <md-input-container id="name">
           <label>Name</label>
-          <input ng-minlength="5" name="name" ng-model="formData.name" required/>
+          <input name="name" ng-model="formData.name" required/>
           <div ng-messages="loginForm.name.$error" style="color:maroon" role="alert">
             <div ng-message="required">This field is required</div>
-            <div ng-message="minlength">The name has to be more than 5 characters long.</div>
           </div>
         </md-input-container>
         <md-input-container id="email">
@@ -19,7 +18,6 @@
           <input name="email" type="email" ng-model="formData.email" required/>
           <div ng-messages="loginForm.email.$error" style="color:maroon" role="alert">
             <div ng-message="required">This field is required</div>
-            <div ng-message="minlength">The name has to be more than 5 characters long.</div>
           </div>
         </md-input-container>
         <md-input-container>
@@ -29,7 +27,6 @@
         <div layout="row" layout-align="center center">
           <md-button class="md-raised md-primary" ng-click="signup()">Sign Up</md-button>
           <div flex="flex"></div>
-          <md-button href="" md-no-ink="md-no-ink">Forgot Password</md-button>
         </div>
       </md-content>
     </form>

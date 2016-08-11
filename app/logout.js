@@ -13,8 +13,8 @@ angular.module('app.logout', ['ngRoute'])
   $scope.logout = function () {
     window.localStorage.removeItem('user_email')
     window.localStorage.removeItem('auth_token')
-    window.location.href = 'login.html'
+    window.localStorage.removeItem('name')
     $location.path('/')
-    $location.reload()
+    location.reload()
   }
 }])

@@ -8,7 +8,7 @@ angular.module('angelApp')
 }])
 .config(function ($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-  .primaryPalette('grey', {
+  .primaryPalette('orange', {
     'default': '400', // by default use shade 400 from the pink palette for primary intentions
     'hue-1': '200', // use shade 100 for the <code>md-hue-1</code> class
     'hue-2': '500', // use shade 600 for the <code>md-hue-2</code> class
@@ -20,22 +20,20 @@ angular.module('angelApp')
     'default': '300' // use shade 300 for default, and keep all other shades the same
   })
   .warnPalette('red')
+  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark()
+  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark()
+  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark()
+  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark()
 })
 .controller('mainController', function ($scope, $http) {
   $scope.currentUserSignedIn = false
   if (window.localStorage.auth_token && window.localStorage.user_email) {
     $scope.currentUserSignedIn = true
-    $http({
-      method: 'GET',
-      url: 'https://aoimpact.herokuapp.com/user',
-      headers: {
-        'User-Email': window.localStorage.user_email,
-        'Auth-Token': window.localStorage.auth_token
-      }
-    })
-    .success(function (response) {
-      console.log(response)
-      $scope.res = response
-    })
+    $scope.name = window.localStorage.name
+    $scope.user_email = window.localStorage.user_email
+  }
+  $scope.isAdmin = false
+  if(window.localStorage.user_email === 'admin@gmail.com'){
+    $scope.isAdmin = true
   }
 })

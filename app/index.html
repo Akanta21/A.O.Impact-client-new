@@ -15,27 +15,23 @@
   <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-app="angelApp" ng-cloak>
-  <div layout="column" layout-align="space-between">
-    <md-content class="md-padding" ng-controller="mainController">
-      <md-nav-bar  nav-bar-aria-label="navigation links" layout="row" layout-align="center center">
-        <md-button class="md-primary md-raised" href="#!/login" ng-hide="currentUserSignedIn">Login</md-button>
-        <span ng-show="currentUserSignedIn">{{res.currentUser.name}}</span>
-        <md-button class="md-primary md-raised" href="#!/newuser">SignUp</md-button>
-        <md-button class="md-primary md-raised" href="#!/product">Product</md-button>
-        <md-button class="md-primary md-raised" href="#!/instagram">Instagram</md-button>
-        <md-button ng-controller="logoutCtrl" class="md-primary md-raised" ng-click="logout()">Logout</md-button>
-      </md-nav-bar>
-    </md-content>
-  </div>
-  <!-- <ul class="menu">
-    <li><a href="#!/login">Login</a></li>
-    <li><a href="#!/newuser">Signup</a></li>
-    <li><a href="#!/logout" ng-click="logout()">Logout</a></li>
-    <li><a href="#!/product">View All Pre-orders</a></li>
-    <li><a href="#!/instagram">Instagram</a></li>
-  </ul> -->
-
+<body ng-app="angelApp" ng-controller="mainController" ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Icon">
+        <md-tooltip>User</md-tooltip>
+        <md-icon md-svg-icon="angel.svg"></md-icon>
+      </md-button>
+      <span ng-show="currentUserSignedIn">Welcome back, {{name}} !</span>
+      <span flex></span>
+      <md-button class="md-primary md-hue-1 md-raised" href="#!/login" ng-hide="currentUserSignedIn">Login</md-button>
+      <md-button class="md-primary md-hue-1 md-raised" href="#!/newuser" ng-hide="currentUserSignedIn">SignUp</md-button>
+      <md-button class="md-primary md-hue-1 md-raised" href="#!/product">Product</md-button>
+      <md-button ng-controller="logoutCtrl" ng-show="currentUserSignedIn" class="md-primary md-hue-1 md-raised" ng-click="logout()">Logout</md-button>
+      <md-button href="#!/profile" ng-show="currentUserSignedIn" class="md-primary md-hue-1 md-raised" >Profile</md-button>
+    </div>
+  </md-toolbar>
+</div>
 
   <div ng-view></div>
 
@@ -49,11 +45,9 @@
   <script src="app.config.js"></script>
   <script src="login/login.js"></script>
   <script src="newuser/newuser.js"></script>
-  <script src="instagram/instagram.js"></script>
+  <script src="newitem/newitem.js"></script>
+  <script src="profile/profile.js"></script>
   <script src="logout.js"></script>
   <script src="product/product.js"></script>
-  <!-- <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script> -->
 </body>
 </html>
