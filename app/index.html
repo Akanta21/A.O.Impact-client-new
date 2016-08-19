@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,31 +16,10 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link href="https://fonts.googleapis.com/css?family=Denk+One|Fjalla+One|Oswald" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-material/angular-material.js"></script>
-  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-  <script src="bower_components/angular-touch/angular-touch.js"></script>
-  <script src="bower_components/slick-carousel/slick/slick.js"></script>
-  <script src="bower_components/angular-slick/dist/slick.js"></script>
-  <script src="app.module.js"></script>
-  <script src="app.config.js"></script>
-  <script src="home/home.js"></script>
-  <script src="login/login.js"></script>
-  <script src="allusers/allusers.js"></script>
-  <script src="newuser/newuser.js"></script>
-  <script src="newitem/newitem.js"></script>
-  <script src="profile/profile.js"></script>
-  <script src="logout.js"></script>
-  <script src="product/product.js"></script>
 </head>
 <body ng-app="angelApp" ng-controller="mainController" ng-cloak>
   <md-toolbar>
@@ -61,9 +37,32 @@
       <md-button class="md-raised" href="#!/newuser" ng-hide="currentUserSignedIn">SignUp</md-button>
       <md-button href="#!/profile" ng-show="currentUserSignedIn" class="md-raised" >Profile</md-button>
       <md-button href="#!/allusers" ng-show="isAdmin" class="md-raised" >All Users</md-button>
+      <md-button ng-show="currentUserSignedIn">Total Price: {{totalPrice | currency}} </md-button>
       <md-button ng-controller="logoutCtrl" ng-show="currentUserSignedIn" class="md-warn md-hue-1 md-raised" ng-click="logout()">Logout</md-button>
     </div>
   </md-toolbar>
   <div ng-view></div>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/slick-carousel/slick/slick.js"></script>
+  <script src="bower_components/angular-slick/dist/slick.js"></script>
+  <script src="bower_components/ngCart/dist/ngCart.js"></script>
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+  <script src="home/home.js"></script>
+  <script src="login/login.js"></script>
+  <script src="allusers/allusers.js"></script>
+  <script src="newuser/newuser.js"></script>
+  <script src="newitem/newitem.js"></script>
+  <script src="profile/profile.js"></script>
+  <script src="logout.js"></script>
+  <script src="product/product.js"></script>
 </body>
 </html>

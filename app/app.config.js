@@ -36,4 +36,5 @@ angular.module('angelApp')
   if(window.localStorage.user_email === 'admin@gmail.com'){
     $scope.isAdmin = true
   }
+  $scope.totalPrice = window.localStorage.totalPrice
 })

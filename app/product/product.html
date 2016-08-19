@@ -26,7 +26,7 @@
              View More
            </md-button>
            <md-button class="md-warn md-raised" ng-click="delete(topic._id)" ng-show="isAdmin">Delete</md-button>
-           <md-button class="md-accent md-raised" ng-click="addToCart(topic.title, topic.price)" ng-show="!isAdmin && currentUserSignedIn">Add to Cart</md-button>
+           <md-button class="md-accent md-raised" ng-click="addToCart( topic.price)" ng-show="!isAdmin && currentUserSignedIn">Add to Cart</md-button>
            <!-- <md-button class="md-warn md-raised" ng-click="removeCart(topic.title, topic.price)" ng-show="!isAdmin && currentUserSignedIn">Remove from cart</md-button> -->
            <md-button class="md-primary md-raised" ng-click="addToHistory(topic.title)" ng-show="currentUserSignedIn">Wishlist!</md-button>
          </md-card-actions>

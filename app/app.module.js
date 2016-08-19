@@ -4,6 +4,7 @@ angular.module('angelApp', [
   'ngRoute',
   'ngMaterial',
   'ngMessages',
+  'ngCart',
   'app.product',
   'app.home',
   'app.login',

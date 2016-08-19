@@ -19,14 +19,26 @@
             <div ng-message="required">This field is required</div>
           </div>
         </md-input-container>
-        <md-input-container id="picture">
+        <label for="picture">Picture</label>
+        <select name="picture" id="picture-select" ng-model="picture" >
+          <option ng-repeat="topic in topics" value="{{topic.images.standard_resolution.url}}">
+            <img ng-src="topic.images.standard_resolution.url" alt="topic.name" style="width:100px;height:100px; padding:10px">
+          </option>
+        </select>
+        <!-- <md-input-container id="picture">
           <label>Picture</label>
           <md-select name="picture" ng-model="picture">
-            <md-option ng-repeat="topic in topics" value="{{topic.images.standard_resolution.url}}">
-              <img ng-src="{{topic.images.standard_resolution.url}}" style="width:150px;height:150px"; />
-            </md-option>
+            <md-list-item class="md-1-line" ng-repeat="topic in topics">
+              <md-option value="{{topic.images.standard_resolution.url}}">
+                <img ng-src="{{topic.images.standard_resolution.url}}" style="width:100px;height:100px; padding:10px"; />
+                <br />
+                <br />
+              </md-option>
+            </md-list-item>
           </md-select>
-        </md-input-container>
+          <br>
+          <br>
+        </md-input-container> -->
         <md-input-container id="stock">
           <label>Stock (QTY)</label>
           <input name="stock" type="stock" ng-model="formData.stock" required/>

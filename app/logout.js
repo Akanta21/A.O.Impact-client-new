@@ -14,6 +14,7 @@ angular.module('app.logout', ['ngRoute'])
     window.localStorage.removeItem('user_email')
     window.localStorage.removeItem('auth_token')
     window.localStorage.removeItem('name')
+    window.localStorage.removeItem('totalPrice')
     $location.path('/')
     location.reload()
   }

@@ -32,7 +32,7 @@ angular.module('app.login', ['ngRoute'])
     })
     .error(function (response) {
       console.log(response)
-      $scope.message = response.err
+      $scope.message = response.error
     })
   }
 }])

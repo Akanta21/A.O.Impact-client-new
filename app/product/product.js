@@ -37,6 +37,18 @@ angular.module('app.product', ['ngRoute'])
       location.reload()
     })
   }
+  $scope.addToCart = function(price) {
+    if(!window.localStorage.auth_token) {
+      $mdDialog.cancel();
+      $location.path("/newuser")
+    }
+    else {
+      totalPrice += price
+      window.localStorage.totalPrice = totalPrice
+      console.log(totalPrice)
+      $mdDialog.cancel()
+    }
+  };
   $scope.addToHistory = function (item) {
     console.log(item)
     $http({
@@ -55,14 +67,14 @@ angular.module('app.product', ['ngRoute'])
       location.reload()
     })
   }
-  $scope.addToCart = function (item, price) {
-    itemsArray.push(item)
-    priceArray.push(price)
-    totalPrice += price
-    console.log(itemsArray)
-    console.log(priceArray)
-    console.log(totalPrice)
-  }
+  // $scope.addToCart = function (item, price) {
+  //   itemsArray.push(item)
+  //   priceArray.push(price)
+  //   totalPrice += price
+  //   console.log(itemsArray)
+  //   console.log(priceArray)
+  //   console.log(totalPrice)
+  // }
   $scope.individual = "random"
   $scope.showAdvanced = (ev, itemObject) => {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen
@@ -91,36 +103,12 @@ angular.module('app.product', ['ngRoute'])
     })
     function DialogController($scope, $mdDialog,$location, item) {
       $scope.item = item
-      console.log($scope.item)
     $scope.hide = function() {
       $mdDialog.hide();
-      console.log($scope.item)
-    };
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-      $location.path("/newuser")
     };
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
   }
   };
-
-
-  // $scope.removeCart = function (item, price) {
-  //   totalPrice -= price
-  //   console.log(totalPrice)
-  //   for (var i = itemsArray.length - 1; i >= 0; i--) {
-  //     if (itemsArray[i] === item) {
-  //       console.log(itemsArray)
-  //       return itemsArray.splice(i, 1)
-  //     }
-  //   }
-  //   for (var j = priceArray.length - 1; j >= 0; i--) {
-  //     if (priceArray[j].toString() === price.toString()) {
-  //       console.log(priceArray)
-  //       return priceArray.splice(j, 1)
-  //     }
-  //   }
-  // }
 }])
